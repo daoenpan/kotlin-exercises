@@ -3,8 +3,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "2.0.10"
-    kotlin("plugin.power-assert") version "2.0.10"
+    kotlin("jvm") version "2.1.0"
+    kotlin("plugin.power-assert") version "2.1.0"
     application
 }
 
@@ -19,13 +19,14 @@ dependencies {
     implementation(kotlin("test"))
     implementation(kotlin("test-junit"))
     implementation(kotlin("reflect"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
     implementation("com.sksamuel.aedile:aedile-core:1.3.1") // Needed for CompanyDetailsRepository
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.freeCompilerArgs = listOf("-Xcontext-receivers", "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
+    kotlinOptions.freeCompilerArgs =
+        listOf("-Xcontext-receivers", "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
 }
 
 java.sourceSets["test"].java {
@@ -42,5 +43,5 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 kotlin {
-    jvmToolchain(20)
+    jvmToolchain(21)
 }
