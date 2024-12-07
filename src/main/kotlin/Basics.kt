@@ -10,12 +10,19 @@ import kotlin.test.assertEquals
 // “FizzBuzz” if number is divisible both by 3 and 5 (by 15)
 // Print elements using `console.println`
 fun fizzBuzz() {
-    TODO()
+    for (i in 1..100) {
+        when {
+            i % 15 == 0 -> println("FizzBuzz")
+            i % 5 == 0 -> println("Buzz")
+            i % 3 == 0 -> println("Fizz")
+            else -> println(i)
+        }
+    }
 }
 
 // Fibonacci number that starts from 1 and 1 (fib(0) == 1, fib(1) == 1, fib(2) == 2, fib(3) == 3, fib(4) == 5, fib(5) == 8)
 // https://en.wikipedia.org/wiki/Fibonacci_number
-fun fib(n: Int): Int = TODO()
+fun fib(n: Int): Int = if (n <= 1) 1 else fib(n - 1) + fib(n - 2)
 
 class BasicsTests {
     @Test
@@ -23,7 +30,10 @@ class BasicsTests {
         val out = ByteArrayOutputStream()
         System.setOut(PrintStream(out))
         fizzBuzz()
-        val expected = (1..100).joinToString("\n") { i ->
+        val expected = (1..100).joinToString(
+            separator = "\n",
+            postfix = "\n"
+        ) { i ->
             when {
                 i % 15 == 0 -> "FizzBuzz"
                 i % 3 == 0 -> "Fizz"
@@ -31,7 +41,7 @@ class BasicsTests {
                 else -> i.toString()
             }
         }
-        assertEquals(expected, out.toString().trim())
+        assertEquals(expected, out.toString())
     }
 
     @Test
