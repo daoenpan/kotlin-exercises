@@ -2,6 +2,8 @@
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+val coroutineVersion = "1.9.0"
+
 plugins {
     kotlin("jvm") version "2.1.0"
     kotlin("plugin.power-assert") version "2.1.0"
@@ -19,8 +21,8 @@ dependencies {
     implementation(kotlin("test"))
     implementation(kotlin("test-junit"))
     implementation(kotlin("reflect"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion")
     implementation("com.sksamuel.aedile:aedile-core:1.3.1") // Needed for CompanyDetailsRepository
 }
 
